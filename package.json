@@ -1,0 +1,25 @@
+{
+  "name": "rocket-bot-legacy",
+  "version": "1.0.0",
+  "description": "Bot de Rocket.Chat con soporte para Livechat",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -r dotenv/config node_modules/hubot/bin/hubot.js -a rocketchat",
+    "dev": "node -r dotenv/config node_modules/hubot/bin/hubot.js -a rocketchat"
+  },
+  "keywords": [
+    "rocketchat",
+    "hubot",
+    "bot",
+    "livechat"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "coffeescript": "^2.7.0",
+    "dotenv": "^16.1.4",
+    "hubot": "^3.3.2",
+    "hubot-rocketchat": "^2.0.0",
+    "openai": "^4.97.0"
+  }
+}
