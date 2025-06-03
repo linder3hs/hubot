@@ -1,3 +1,5 @@
+"use strict";
+
 const OpenAI = require("openai");
 
 const openai = new OpenAI({
@@ -5,29 +7,25 @@ const openai = new OpenAI({
   apiKey: "sk-da937a8a5a2c4aea948dfca4d97d9a3f",
 });
 
-/**
- * Generate a response using DeepSeek AI
- * @param {string} userMessage - The message from the user
- * @param {string} systemPrompt - Optional custom system prompt
- * @returns {Promise<string>} The AI-generated response
- */
-async function generateAIResponse(userMessage, systemPrompt = "You are a helpful assistant that provides concise and accurate information.") {
+const defaultPrompt = "Eres un asistente virtual amable, conciso y preciso.";
+
+const generateAIResponse = async (
+  userMessage,
+  systemPrompt = defaultPrompt
+) => {
   try {
-    const completion = await openai.chat.completions.create({
+    const { choices } = await openai.chat.completions.create({
+      model: "deepseek-chat",
       messages: [
         { role: "system", content: systemPrompt },
-        { role: "user", content: userMessage }
+        { role: "user", content: userMessage },
       ],
-      model: "deepseek-chat",
     });
-
-    return completion.choices[0].message.content;
-  } catch (error) {
-    console.error("Error generating AI response:", error);
-    return "Lo siento, tuve un problema al procesar tu solicitud. Por favor, intenta de nuevo más tarde.";
+    return choices[0].message.content;
+  } catch (e) {
+    console.error("AI error:", e);
+    return "Lo siento, tuve un problema al procesar tu solicitud.";
   }
-}
-
-module.exports = {
-  generateAIResponse
 };
+
+module.exports = { generateAIResponse };

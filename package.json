@@ -4,8 +4,8 @@
   "description": "Bot de Rocket.Chat con soporte para Livechat",
   "main": "index.js",
   "scripts": {
-    "start": "node -r dotenv/config node_modules/hubot/bin/hubot.js -a rocketchat",
-    "dev": "node -r dotenv/config node_modules/hubot/bin/hubot.js -a rocketchat"
+    "start": "node -r dotenv/config node_modules/hubot/bin/hubot.js -a rocketchat --require ./rocketchat-config.js",
+    "dev": "node -r dotenv/config node_modules/hubot/bin/hubot.js -a rocketchat --require ./rocketchat-config.js"
   },
   "keywords": [
     "rocketchat",
