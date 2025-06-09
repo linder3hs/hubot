@@ -1,17 +1,20 @@
 {
   "name": "rocket-bot-legacy",
   "version": "1.0.0",
-  "description": "Bot de Rocket.Chat con soporte para Livechat",
+  "description": "Bot de Rocket.Chat con soporte para Livechat y AI",
   "main": "index.js",
   "scripts": {
-    "start": "node -r dotenv/config node_modules/hubot/bin/hubot.js -a rocketchat --require ./rocketchat-config.js",
-    "dev": "node -r dotenv/config node_modules/hubot/bin/hubot.js -a rocketchat --require ./rocketchat-config.js"
+    "start": "node -r dotenv/config node_modules/hubot/bin/hubot.js -a rocketchat",
+    "dev": "NODE_ENV=development npm start",
+    "health": "node scripts/health-check.js"
   },
   "keywords": [
     "rocketchat",
     "hubot",
     "bot",
-    "livechat"
+    "livechat",
+    "ai",
+    "customer-support"
   ],
   "author": "",
   "license": "ISC",
@@ -21,5 +24,9 @@
     "hubot": "^3.3.2",
     "hubot-rocketchat": "^2.0.0",
     "openai": "^4.97.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
   }
 }
